@@ -9,10 +9,8 @@ const { validarCampos } = require('../middlewares/validar-campos');
 
 const router = express.Router();
 
-router.get('/prueba', async(req, res) => {
-    await connection()
-    console.log('Connection OK');
-    res.send('Haciendo un GET en pruebas')
+router.get('/', async(req, res) => {
+    res.send('CONECTADO AL SERVICIO')
 })
 
 router.get(
