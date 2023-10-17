@@ -5,18 +5,19 @@ require('dotenv').config();
 
 const server = express();
 
-if(process.env.NODE_ENV === 'development'){
+/* if(process.env.NODE_ENV === 'development'){
     server.use(cors())
 }else {
     server.use(
         cors({
-          origin: 'http://localhost:5173/clientes', // Agrega tu dominio de producción aquí
+          origin: 'http://localhost:5173/clientes'
         })
       );
-}
+} */
 
-server.use(express.json())
-server.use('/', routes)
+server.use(cors());
+server.use(express.json());
+server.use('/', routes);
 
 
 module.exports = server;
