@@ -10,7 +10,7 @@ if(process.env.NODE_ENV === 'development'){
 }else {
     server.use(
         cors({
-          origin: 'http://localhost:5173', // Agrega tu dominio de producción aquí
+          origin: 'http://localhost:5173/clientes', // Agrega tu dominio de producción aquí
         })
       );
 }
