@@ -1,25 +1,46 @@
-const express = require("express");
-const getDatosUsuarios = require("../controllers/getDatosUsuarios");
-const getUsuario = require("../controllers/getUsuario");
-const putUsuario = require("../controllers/putUsuario");
-const postEnvioEmail = require("../controllers/postEnvioEmail");
-const deleteUsuario = require("../controllers/deleteUsuario");
-const { validarCampos } = require("../middlewares/validar-campos");
+const express = require('express');
+const getDatosUsuarios = require('../controllers/getDatosUsuarios');
+const getUsuario = require('../controllers/getUsuario');
+const putUsuario = require('../controllers/putUsuario');
+const postCargaUsuarios = require('../controllers/postCargaUsuarios');
+const deleteUsuario = require('../controllers/deleteUsuario');
+const connection = require('../dbConnection/connection');
+const { validarCampos } = require('../middlewares/validar-campos');
 
 const router = express.Router();
 
-//router.get("/", async (req, res) => {
-  //res.send("CONECTADO AL SERVICIO");
-//});
+router.get('/', async(req, res) => {
+    res.send('CONECTADO AL SERVICIO')
+})
 
-//router.get("/datos/usuarios", validarCampos, getDatosUsuarios);
+router.get(
+    '/datos/usuarios',
+    validarCampos, 
+    getDatosUsuarios
+);
 
-//router.get("/datos/usuarios/:id", validarCampos, getUsuario);
+router.get(
+    '/datos/usuarios/:id',
+    validarCampos,
+    getUsuario
+);
 
-//router.put("/datos/usuarios/:id", validarCampos, putUsuario);
+router.put(
+    '/datos/usuarios/:id',
+    validarCampos,
+    putUsuario
+)
 
-router.post("/send-email", postEnvioEmail);
+router.post(
+    '/datos/usuarios',
+    validarCampos,
+    postCargaUsuarios
+)
 
-//router.delete("/datos/usuarios/:id", validarCampos, deleteUsuario);
+router.delete(
+    '/datos/usuarios/:id',
+    validarCampos,
+    deleteUsuario
+)
 
 module.exports = router;
