@@ -5,16 +5,6 @@ require('dotenv').config();
 
 const server = express();
 
-/* if(process.env.NODE_ENV === 'development'){
-    server.use(cors())
-}else {
-    server.use(
-        cors({
-          origin: 'http://localhost:5173/clientes'
-        })
-      );
-} */
-
 server.use(
   cors({
       origin: ['http://localhost:5173']
